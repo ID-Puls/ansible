@@ -1,0 +1,4 @@
+---
+- name: Wazuh Ansible
+  src: https://github.com/wazuh/wazuh-ansible.git
+  version: v4.14.8

@@ -1,0 +1,10 @@
+---
+- name: Deploy Wazuh Single Node
+  hosts: aio
+  become: true
+
+  roles:
+    - role: Wazuh Ansible.roles.wazuh.wazuh-indexer
+    - role: Wazuh Ansible.roles.ansible-wazuh-manager
+    - role: Wazuh Ansible.roles.ansible-filebeat-oss
+    - role: Wazuh Ansible.roles.wazuh-dashboard
