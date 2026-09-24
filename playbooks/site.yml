@@ -1,0 +1,14 @@
+---
+- name: Configure local machine
+  hosts: local
+  gather_facts: true
+
+  tasks:
+    - name: Show operating system
+      ansible.builtin.debug:
+        msg: "System: {{ ansible_facts['system'] }}"
+
+    - name: Show hostname
+      ansible.builtin.debug:
+        msg: "Hostname: {{ ansible_facts['hostname'] }}"
+
