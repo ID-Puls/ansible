@@ -1,0 +1,28 @@
+---
+- name: Deploy Wazuh Single Node
+  hosts: aio
+  become: true
+
+  roles:
+    - role: wazuh-indexer
+    - role: ansible-wazuh-manager
+    - role: ansible-filebeat-oss
+    - role: wazuh-dashboard
+
+  vars:
+    single_node: true
+    minimum_master_nodes: 1
+
+    indexer_node_master: true
+    indexer_network_host: "{{ ansible_default_ipv4.address }}"
+
+    filebeat_node_name: node-1
+
+    filebeat_output_indexer_hosts:
+      - "{{ ansible_default_ipv4.address }}"
+
+    instances:
+      node1:
+        name: node-1
+        ip: "{{ ansible_default_ipv4.address }}"
+        role: indexer
